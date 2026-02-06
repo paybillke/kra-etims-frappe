@@ -7,9 +7,7 @@ from decimal import ROUND_DOWN, Decimal
 from io import BytesIO
 from typing import Literal
 
-import aiohttp
 import qrcode
-from aiohttp import ClientTimeout
 
 import frappe
 from frappe.model.document import Document
@@ -36,46 +34,6 @@ def is_valid_kra_pin(pin: str) -> bool:
     """
     pattern = r"^[a-zA-Z]{1}[0-9]{9}[a-zA-Z]{1}$"
     return bool(re.match(pattern, pin))
-
-
-async def make_get_request(url: str) -> dict[str, str] | str:
-    """Make an Asynchronous GET Request to specified URL
-
-    Args:
-        url (str): The URL
-
-    Returns:
-        dict: The Response
-    """
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            if response.content_type.startswith("text"):
-                return await response.text()
-
-            return await response.json()
-
-
-async def make_post_request(
-    url: str,
-    data: dict[str, str] | None = None,
-    headers: dict[str, str | int] | None = None,
-) -> dict[str, str | dict]:
-    """Make an Asynchronous POST Request to specified URL
-
-    Args:
-        url (str): The URL
-        data (dict[str, str] | None, optional): Data to send to server. Defaults to None.
-        headers (dict[str, str | int] | None, optional): Headers to set. Defaults to None.
-
-    Returns:
-        dict: The Server Response
-    """
-    # TODO: Refactor to a more efficient handling of creation of the session object
-    # as described in documentation
-    async with aiohttp.ClientSession(timeout=ClientTimeout(1800)) as session:
-        # Timeout of 1800 or 30 mins, especially for fetching Item classification
-        async with session.post(url, json=data, headers=headers) as response:
-            return await response.json()
 
 
 def build_datetime_from_string(
@@ -135,11 +93,13 @@ def get_environment_settings(
         raise ValueError("branch_id must be '00' or '01'")
 
     query = f"""
-    SELECT server_url,
+    SELECT
         name,
         vendor,
         tin,
         dvcsrlno,
+        consumer_key,
+        consumer_secret,
         bhfid,
         company,
         communication_key,

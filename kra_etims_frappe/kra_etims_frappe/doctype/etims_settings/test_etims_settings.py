@@ -5,8 +5,6 @@ from frappe.model.document import Document
 from frappe.tests.utils import FrappeTestCase
 
 from ..doctype_names_mapping import (
-    PRODUCTION_SERVER_URL,
-    SANDBOX_SERVER_URL,
     SETTINGS_DOCTYPE_NAME,
 )
 from .etims_settings import eTimsSettings
@@ -30,7 +28,7 @@ def mock_before_insert_2(self, *args) -> None:
         dimension.append(
             "dimension_defaults",
             {
-                "company": "Compliance Test Company",
+                "company": "Test Company",
             },
         )
 
@@ -40,12 +38,12 @@ def mock_before_insert_2(self, *args) -> None:
 def create_test_company():
     frappe.delete_doc_if_exists(
         "Company",
-        {"abbr": "CTC", "company_name": "Compliance Test Company"},
+        {"abbr": "CTC", "company_name": "Test Company"},
         force=1,
     )
     company = frappe.new_doc("Company")
 
-    company.company_name = "Compliance Test Company"
+    company.company_name = "Test Company"
     company.abbr = "CTC"
     company.default_currency = "USD"
     company.country = "Kenya"
@@ -55,12 +53,12 @@ def create_test_company():
 
     frappe.delete_doc_if_exists(
         "Company",
-        {"abbr": "CTC2", "company_name": "Compliance Test Company 2"},
+        {"abbr": "CTC2", "company_name": "Test Company 2"},
         force=1,
     )
     company = frappe.new_doc("Company")
 
-    company.company_name = "Compliance Test Company 2"
+    company.company_name = "Test Company 2"
     company.abbr = "CTC2"
     company.default_currency = "USD"
     company.country = "Kenya"
@@ -114,7 +112,7 @@ class TesteTimsSettings(FrappeTestCase):
         # 1. Delete dependent Settings first
         settings = frappe.get_all(
             SETTINGS_DOCTYPE_NAME,
-            filters={"company": ["like", "%Compliance Test Company%"]},
+            filters={"company": ["like", "%Test Company%"]},
             pluck="name",
         )
         for s in settings:
@@ -131,8 +129,8 @@ class TesteTimsSettings(FrappeTestCase):
 
         # 4. Delete Companies
         for abbr, name in [
-            ("CTC", "Compliance Test Company"),
-            ("CTC2", "Compliance Test Company 2"),
+            ("CTC", "Test Company"),
+            ("CTC2", "Test Company 2"),
         ]:
             comp_name = frappe.get_value("Company", {"abbr": abbr, "company_name": name})
             if comp_name:
@@ -146,9 +144,11 @@ class TesteTimsSettings(FrappeTestCase):
             new_setting = frappe.new_doc(SETTINGS_DOCTYPE_NAME)
 
             new_setting.bhfid = "100"
-            new_setting.company = "Compliance Test Company"
+            new_setting.company = "Test Company"
             new_setting.tin = "A123456789Z"
             new_setting.dvcsrlno = "123456"
+            new_setting.consumer_key = ""
+            new_setting.consumer_secret = ""
             new_setting.vendor = "Test Vendor"
 
             new_setting.save()
@@ -166,7 +166,7 @@ class TesteTimsSettings(FrappeTestCase):
         self.assertIsNone(
             frappe.db.exists(
                 SETTINGS_DOCTYPE_NAME,
-                {"abbr": "CTC", "company_name": "Compliance Test Company"},
+                {"abbr": "CTC", "company_name": "Test Company"},
                 cache=False,
             )
         )
@@ -176,11 +176,13 @@ class TesteTimsSettings(FrappeTestCase):
             new_setting = frappe.new_doc(SETTINGS_DOCTYPE_NAME)
 
             new_setting.bhfid = "00"
-            new_setting.company = "Compliance Test Company"
+            new_setting.company = "Test Company"
             new_setting.tin = "A123456789Z"
             new_setting.dvcsrlno = """
             0bd7d5dacd2eadf8c1be64692ea461e648b0a0f359c4c4c5709033ee444821c5e6310dbf3f584fbcfa5e8837f1cd9e378583b929e21cb2a102f8c433a5000858348d8c292e25fe5a5b6ac8ff59bd78dd9e7dba3adce90b176ec19678aeece25ca1e13b02eb
             """
+            new_setting.consumer_key = ""
+            new_setting.consumer_secret = ""
             new_setting.vendor = "Test Vendor"
 
             new_setting.save()
@@ -190,8 +192,10 @@ class TesteTimsSettings(FrappeTestCase):
             new_setting = frappe.new_doc(SETTINGS_DOCTYPE_NAME)
 
             new_setting.bhfid = "00"
-            new_setting.company = "Compliance Test Company 2"
+            new_setting.company = "Test Company 2"
             new_setting.dvcsrlno = "123456"
+            new_setting.consumer_key = ""
+            new_setting.consumer_secret = ""
             new_setting.vendor = "Test Vendor"
 
             new_setting.save()
@@ -201,8 +205,10 @@ class TesteTimsSettings(FrappeTestCase):
 
         new_setting.bhfid = "00"
         new_setting.is_active = 1
-        new_setting.company = "Compliance Test Company"
+        new_setting.company = "Test Company"
         new_setting.dvcsrlno = "123456"
+        new_setting.consumer_key = ""
+        new_setting.consumer_secret = ""
         new_setting.vendor = "OSCU KRA"  
 
         new_setting.save()
@@ -211,14 +217,16 @@ class TesteTimsSettings(FrappeTestCase):
 
         new_setting_2.bhfid = "00"
         new_setting_2.is_active = 1
-        new_setting_2.company = "Compliance Test Company"
+        new_setting_2.company = "Test Company"
         new_setting_2.dvcsrlno = "54321"
+        new_setting_2.consumer_key = ""
+        new_setting_2.consumer_secret = ""
         new_setting_2.vendor = "OSCU KRA"  
         new_setting_2.save()
 
         all_active_envs = frappe.get_all(
             SETTINGS_DOCTYPE_NAME,
-            {"company": "Compliance Test Company", "is_active": 1},
+            {"company": "Test Company", "is_active": 1},
         )
 
         self.assertEqual(len(all_active_envs), 1)
@@ -229,8 +237,10 @@ class TesteTimsSettings(FrappeTestCase):
 
             new_setting.bhfid = "00"
             new_setting.is_active = 1
-            new_setting.company = "Compliance Test Company"
+            new_setting.company = "Test Company"
             new_setting.dvcsrlno = "123456"
+            new_setting.consumer_key = ""
+            new_setting.consumer_secret = ""
             new_setting.sales_information_submission = "Cron"
             new_setting.sales_info_cron_format = "* * * * * *"
             new_setting.stock_information_submission = "Cron"
@@ -246,8 +256,10 @@ class TesteTimsSettings(FrappeTestCase):
 
         new_setting.bhfid = "00"
         new_setting.is_active = 1
-        new_setting.company = "Compliance Test Company"
+        new_setting.company = "Test Company"
         new_setting.dvcsrlno = "123456"
+        new_setting.consumer_key = ""
+        new_setting.consumer_secret = ""
         new_setting.sales_information_submission = "Cron"
         new_setting.sales_info_cron_format = "* * * * *"
         new_setting.vendor = "OSCU KRA"  
@@ -272,8 +284,10 @@ class TesteTimsSettings(FrappeTestCase):
 
         new_setting.bhfid = "00"
         new_setting.is_active = 1
-        new_setting.company = "Compliance Test Company"
+        new_setting.company = "Test Company"
         new_setting.dvcsrlno = "123456"
+        new_setting.consumer_key = ""
+        new_setting.consumer_secret = ""
         new_setting.sales_information_submission = "Cron"
         new_setting.sales_info_cron_format = "* * * * *"
         new_setting.autocreate_branch_dimension = 1

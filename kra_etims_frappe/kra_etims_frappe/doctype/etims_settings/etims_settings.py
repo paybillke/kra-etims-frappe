@@ -10,8 +10,6 @@ from kra_etims_sdk.exceptions import ApiException, AuthenticationException
 # Local imports
 from ...doctype.doctype_names_mapping import (
     SETTINGS_DOCTYPE_NAME,
-    PRODUCTION_SERVER_URL,
-    SANDBOX_SERVER_URL,
 )
 from ...utils import (
     is_valid_kra_pin,
@@ -28,10 +26,12 @@ class eTimsSettings(Document):
     def validate(self) -> None:
         """Validation Hook - ensures data integrity before save"""
         self.error_title = "Validation Error"
+        self.sandboxServerUrl = 'https://etims-api-sbx.kra.go.ke/etims-api'
+        self.productionServerUrl = 'https://etims-api.kra.go.ke/etims-api'
 
         # Set environment flag and server URL based on sandbox toggle
         self.env = "Sandbox" if self.sandbox else "Production"
-        self.server_url = SANDBOX_SERVER_URL if self.sandbox else PRODUCTION_SERVER_URL
+        self.server_url = self.sandboxServerUrl if self.sandbox else self.productionServerUrl
 
         # Validate branch ID format (exactly 2 characters per KRA spec)
         if self.bhfid and len(self.bhfid) != 2:
@@ -45,6 +45,20 @@ class eTimsSettings(Document):
         if self.dvcsrlno and len(self.dvcsrlno) > 100:
             frappe.throw(
                 "Device Serial Number cannot exceed 100 characters",
+                frappe.ValidationError,
+                title=self.error_title
+            )
+
+        if not self.consumer_key:
+            frappe.throw(
+                "Consumer Key is mandatory for eTIMS integration",
+                frappe.ValidationError,
+                title=self.error_title
+            )
+
+        if not self.consumer_secret:
+            frappe.throw(
+                "Consumer Secret is mandatory for eTIMS integration",
                 frappe.ValidationError,
                 title=self.error_title
             )

@@ -1110,27 +1110,29 @@ def submit_item_composition(request_data: str, vendor: str = "OSCU KRA") -> None
 
 @frappe.whitelist()
 def ping_server(request_data: str) -> None:
-    """Check server connectivity using simple HTTP HEAD request (more reliable than dummy auth)"""
-    import aiohttp
-    import asyncio
-    
-    url = json.loads(request_data)["server_url"]
-    
-    async def check_connectivity():
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.head(url, timeout=5) as resp:
-                    return resp.status == 200
-        except:
-            return False
-    
+    """Check server connectivity using a simple HTTP request"""
+    import json
+    import requests
+
     try:
-        is_online = asyncio.run(check_connectivity())
-        frappe.msgprint("The Server is Online" if is_online else "The Server is Offline")
+        url = json.loads(request_data)["server_url"]
+
+        response = requests.request(
+            method="HEAD",   # or "GET" if the server blocks HEAD
+            url=url,
+            timeout=5,
+            allow_redirects=True,
+        )
+
+        is_online = response.status_code < 400
+
+        frappe.msgprint(
+            "The Server is Online" if is_online else "The Server is Offline"
+        )
+
     except Exception as e:
         frappe.msgprint("The Server is Offline")
         frappe.log_error(title="Server Ping Error", message=str(e))
-
 
 @frappe.whitelist()
 def create_stock_entry_from_stock_movement(request_data: str) -> None:

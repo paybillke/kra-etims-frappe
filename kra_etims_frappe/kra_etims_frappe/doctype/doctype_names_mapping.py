@@ -37,7 +37,3 @@ REGISTERED_IMPORTED_ITEM_DOCTYPE_NAME: Final[str] = (
 )
 
 ROUTES_URL_FUNCTION_DOCTYPE_NAME: Final[str]  = ("eTims URL Path Function")
-
-# Global Variables
-SANDBOX_SERVER_URL: Final[str] = "https://etims-api-sbx.kra.go.ke/etims-api"
-PRODUCTION_SERVER_URL: Final[str] = "https://etims-api.kra.go.ke/etims-api"
