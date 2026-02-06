@@ -1,0 +1,30 @@
+[project]
+name = "kra-etims-frappe"
+authors = [
+    { name = "Paybill Kenya", email = "support@paybill.ke"}
+]
+description = "A Frappe App for integrating with the Kenya Revenue Authority (KRA) Electronic Tax Invoice Management System (eTims) API"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "aiohttp==3.9.1",
+    "kra-etims-sdk==0.1.3",
+    "qrcode==7.4.2"
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.isort]
+profile = "black"
+known_frappe = "frappe"
+known_erpnext = "erpnext"
+no_lines_before = ["ERPNEXT"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FRAPPE", "ERPNEXT", "FIRSTPARTY", "LOCALFOLDER"]
+
+# These dependencies are only installed when developer mode is enabled
+[tool.bench.dev-dependencies]
+pre-commit = "~=3.7.1"
+flake8 = "~=7.1.0"

@@ -1,0 +1,46 @@
+[
+  {
+    "code": "C",
+    "code_description": "Sales and purchase type : Copy",
+    "code_name": "Copy",
+    "docstatus": 0,
+    "doctype": "eTims Transaction Type",
+    "modified": "2026-01-01 00:00:00",
+    "name": "Copy",
+    "remark": null,
+    "sort_order": "1"
+  },
+  {
+    "code": "N",
+    "code_description": " Sales and purchase type : Normal",
+    "code_name": "Normal",
+    "docstatus": 0,
+    "doctype": "eTims Transaction Type",
+    "modified": "2026-01-01 00:00:00",
+    "name": "Normal",
+    "remark": null,
+    "sort_order": "2"
+  },
+  {
+    "code": "P",
+    "code_description": "Sales and purchase type : Proforma",
+    "code_name": "Proforma",
+    "docstatus": 0,
+    "doctype": "eTims Transaction Type",
+    "modified": "2026-01-01 00:00:00",
+    "name": "Proforma",
+    "remark": "Proforma Invoice",
+    "sort_order": "3"
+  },
+  {
+    "code": "T",
+    "code_description": "Sales and purchase type : Training",
+    "code_name": "Training",
+    "docstatus": 0,
+    "doctype": "eTims Transaction Type",
+    "modified": "2026-01-01 00:00:00",
+    "name": "Training",
+    "remark": null,
+    "sort_order": "4"
+  }
+]

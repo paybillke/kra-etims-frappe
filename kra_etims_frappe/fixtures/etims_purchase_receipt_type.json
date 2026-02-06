@@ -1,0 +1,24 @@
+[
+  {
+    "code": "P",
+    "code_description": "Purchase",
+    "code_name": "Purchase",
+    "docstatus": 0,
+    "doctype": "eTims Purchase Receipt Type",
+    "modified": "2026-01-01 00:00:00",
+    "name": "Purchase",
+    "remark": null,
+    "sort_order": "1"
+  },
+  {
+    "code": "R",
+    "code_description": "Credit Note after Purchase",
+    "code_name": "Credit Note after Purchase",
+    "docstatus": 0,
+    "doctype": "eTims Purchase Receipt Type",
+    "modified": "2026-01-01 00:00:00",
+    "name": "Credit Note after Purchase",
+    "remark": null,
+    "sort_order": "2"
+  }
+]

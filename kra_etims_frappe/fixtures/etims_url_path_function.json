@@ -1,0 +1,162 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "DeviceVerificationReq",
+  "url_path": "/selectInitOsdcInfo",
+  "url_path_function": "DeviceVerificationReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "CodeSearchReq",
+  "url_path": "/selectCodeList",
+  "url_path_function": "CodeSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "CustSearchReq",
+  "url_path": "/selectCustomer",
+  "url_path_function": "CustSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "NoticeSearchReq",
+  "url_path": "/selectNoticeList",
+  "url_path_function": "NoticeSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "ItemClsSearchReq",
+  "url_path": "/selectItemClsList",
+  "url_path_function": "ItemClsSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "ItemSaveReq",
+  "url_path": "/saveItem",
+  "url_path_function": "ItemSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "ItemSearchReq",
+  "url_path": "/selectItemList",
+  "url_path_function": "ItemSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "BhfSearchReq",
+  "url_path": "/selectBhfList",
+  "url_path_function": "BhfSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "BhfCustSaveReq",
+  "url_path": "/saveBhfCustomer",
+  "url_path_function": "BhfCustSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "BhfUserSaveReq",
+  "url_path": "/saveBhfUser",
+  "url_path_function": "BhfUserSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "BhfInsuranceSaveReq",
+  "url_path": "/saveBhfInsurance",
+  "url_path_function": "BhfInsuranceSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "ImportItemSearchReq",
+  "url_path": "/selectImportItemList",
+  "url_path_function": "ImportItemSearchReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "ImportItemUpdateReq",
+  "url_path": "/updateImportItem",
+  "url_path_function": "ImportItemUpdateReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "TrnsSalesSaveWrReq",
+  "url_path": "/saveTrnsSalesOsdc",
+  "url_path_function": "TrnsSalesSaveWrReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "TrnsPurchaseSalesReq",
+  "url_path": "/selectTrnsPurchaseSalesList",
+  "url_path_function": "TrnsPurchaseSalesReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "TrnsPurchaseSaveReq",
+  "url_path": "/insertTrnsPurchase",
+  "url_path_function": "TrnsPurchaseSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "StockMoveReq",
+  "url_path": "/selectStockMoveList",
+  "url_path_function": "StockMoveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "StockIOSaveReq",
+  "url_path": "/insertStockIO",
+  "url_path_function": "StockIOSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "StockMasterSaveReq",
+  "url_path": "/saveStockMaster",
+  "url_path_function": "StockMasterSaveReq"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "eTims URL Path Function",
+  "modified": "2026-01-01 00:00:00",
+  "name": "SaveItemComposition",
+  "url_path": "/saveItemComposition",
+  "url_path_function": "SaveItemComposition"
+ }
+]
