@@ -1,4 +1,4 @@
-from .kra_etims_frappe.doctype.doctype_names_mapping import (
+from .kra_etims.doctype.doctype_names_mapping import (
     COUNTRIES_DOCTYPE_NAME,
     IMPORTED_ITEMS_STATUS_DOCTYPE_NAME,
     ITEM_CLASSIFICATIONS_DOCTYPE_NAME,
@@ -135,18 +135,18 @@ fixtures = [
 
 # include js in doctype views
 doctype_js = {
-    "Sales Invoice": "kra_etims_frappe/overrides/client/sales_invoice.js",
-    "Purchase Invoice": "kra_etims_frappe/overrides/client/purchase_invoice.js",
-    "Customer": "kra_etims_frappe/overrides/client/customer.js",
-    "Item": "kra_etims_frappe/overrides/client/items.js",
-    "BOM": "kra_etims_frappe/overrides/client/bom.js",
-    "Branch": "kra_etims_frappe/overrides/client/branch.js",
+    "Sales Invoice": "kra_etims/overrides/client/sales_invoice.js",
+    "Purchase Invoice": "kra_etims/overrides/client/purchase_invoice.js",
+    "Customer": "kra_etims/overrides/client/customer.js",
+    "Item": "kra_etims/overrides/client/items.js",
+    "BOM": "kra_etims/overrides/client/bom.js",
+    "Branch": "kra_etims/overrides/client/branch.js",
 }
 
 doctype_list_js = {
-    "Item": "kra_etims_frappe/overrides/client/items_list.js",
-    "Sales Invoice": "kra_etims_frappe/overrides/client/sales_invoice_list.js",
-    "Branch": "kra_etims_frappe/overrides/client/branch_list.js",
+    "Item": "kra_etims/overrides/client/items_list.js",
+    "Sales Invoice": "kra_etims/overrides/client/sales_invoice_list.js",
+    "Branch": "kra_etims/overrides/client/branch_list.js",
 }
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -154,7 +154,7 @@ doctype_list_js = {
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "kra_etims_frappe/public/icons.svg"
+# app_include_icons = "kra_etims/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -178,22 +178,22 @@ doctype_list_js = {
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "kra_etims_frappe.utils.jinja_methods",
-# 	"filters": "kra_etims_frappe.utils.jinja_filters"
+# 	"methods": "kra_etims.utils.jinja_methods",
+# 	"filters": "kra_etims.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "kra_etims_frappe.install.before_install"
-# after_install = "kra_etims_frappe.kra_etims_frappe.setup.after_install.after_install"
+# before_install = "kra_etims.install.before_install"
+# after_install = "kra_etims.kra_etims.setup.after_install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "kra_etims_frappe.uninstall.before_uninstall"
+# before_uninstall = "kra_etims.uninstall.before_uninstall"
 # after_uninstall = (
-#     "kra_etims_frappe.kra_etims_frappe.setup.after_uninstall.after_uninstall"
+#     "kra_etims_frappe.kra_etims.setup.after_uninstall.after_uninstall"
 # )
 
 # Integration Setup
@@ -201,22 +201,22 @@ doctype_list_js = {
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "kra_etims_frappe.utils.before_app_install"
-# after_app_install = "kra_etims_frappe.utils.after_app_install"
+# before_app_install = "kra_etims.utils.before_app_install"
+# after_app_install = "kra_etims.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "kra_etims_frappe.utils.before_app_uninstall"
-# after_app_uninstall = "kra_etims_frappe.utils.after_app_uninstall"
+# before_app_uninstall = "kra_etims.utils.before_app_uninstall"
+# after_app_uninstall = "kra_etims.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "kra_etims_frappe.notifications.get_notification_config"
+# notification_config = "kra_etims.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -250,38 +250,38 @@ doc_events = {
     # 	}
     "Sales Invoice": {
         "before_save":[
-            "kra_etims_frappe.kra_etims_frappe.utils.before_save_"
+            "kra_etims_frappe.kra_etims.utils.before_save_"
         ],
         "on_submit": [
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.sales_invoice.on_submit"
+            "kra_etims_frappe.kra_etims.overrides.server.sales_invoice.on_submit"
         ],
         "validate": [
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.shared_overrides.validate"
+            "kra_etims_frappe.kra_etims.overrides.server.shared_overrides.validate"
         ],
         "before_cancel":[
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.sales_invoice.before_cancel"
+            "kra_etims_frappe.kra_etims.overrides.server.sales_invoice.before_cancel"
         ],
     },
     "Purchase Invoice": {
         "before_save":[
-            "kra_etims_frappe.kra_etims_frappe.utils.before_save_"
+            "kra_etims_frappe.kra_etims.utils.before_save_"
         ],
         "on_submit": [
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.purchase_invoice.on_submit"
+            "kra_etims_frappe.kra_etims.overrides.server.purchase_invoice.on_submit"
         ],
         "validate": [
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.purchase_invoice.validate"
+            "kra_etims_frappe.kra_etims.overrides.server.purchase_invoice.validate"
         ],
         "before_cancel":[
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.sales_invoice.before_cancel"
+            "kra_etims_frappe.kra_etims.overrides.server.sales_invoice.before_cancel"
         ],
     },
     "Item": {
         "validate": [
-            "kra_etims_frappe.kra_etims_frappe.overrides.server.item.validate"
+            "kra_etims_frappe.kra_etims.overrides.server.item.validate"
             
         ],
-        "on_trash": "kra_etims_frappe.kra_etims_frappe.overrides.server.item.prevent_item_deletion"
+        "on_trash": "kra_etims_frappe.kra_etims.overrides.server.item.prevent_item_deletion"
     },
 }
 
@@ -290,43 +290,43 @@ doc_events = {
 
 scheduler_events = {
     "all": [
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.send_stock_information",
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.send_item_inventory_information",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.send_stock_information",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.send_item_inventory_information",
     ],
     # 	"daily": [
-    # 		"kra_etims_frappe.tasks.daily"
+    # 		"kra_etims.tasks.daily"
     # 	],
     "hourly": [
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.send_sales_invoices_information",
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.send_purchase_information",
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.refresh_notices",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.send_sales_invoices_information",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.send_purchase_information",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.refresh_notices",
     ],
     # 	"weekly": [
-    # 		"kra_etims_frappe.tasks.weekly"
+    # 		"kra_etims.tasks.weekly"
     # 	],
     "monthly": [
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.refresh_code_lists",
-        "kra_etims_frappe.kra_etims_frappe.background_tasks.tasks.get_item_classification_codes",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.refresh_code_lists",
+        "kra_etims_frappe.kra_etims.background_tasks.tasks.get_item_classification_codes",
     ],
 }
 
 # Testing
 # -------
 
-# before_tests = "kra_etims_frappe.install.before_tests"
+# before_tests = "kra_etims.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "kra_etims_frappe.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "kra_etims.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "kra_etims_frappe.task.get_dashboard_data"
+# 	"Task": "kra_etims.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -340,13 +340,13 @@ scheduler_events = {
 
 # Request Events
 # ----------------
-# before_request = ["kra_etims_frappe.utils.before_request"]
-# after_request = ["kra_etims_frappe.utils.after_request"]
+# before_request = ["kra_etims.utils.before_request"]
+# after_request = ["kra_etims.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["kra_etims_frappe.utils.before_job"]
-# after_job = ["kra_etims_frappe.utils.after_job"]
+# before_job = ["kra_etims.utils.before_job"]
+# after_job = ["kra_etims.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -376,5 +376,5 @@ scheduler_events = {
 # --------------------------------
 
 # auth_hooks = [
-# 	"kra_etims_frappe.auth.validate"
+# 	"kra_etims.auth.validate"
 # ]

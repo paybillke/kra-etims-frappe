@@ -1,5 +1,5 @@
 [project]
-name = "kra-etims-frappe"
+name = "kra_etims_frappe"
 authors = [
     { name = "Paybill Kenya", email = "support@paybill.ke"}
 ]
@@ -9,7 +9,7 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     "requests",
-    "kra-etims-sdk==0.1.3",
+    "kra-etims-sdk==0.1.4",
     "qrcode==7.4.2"
 ]
 

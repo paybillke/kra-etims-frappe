@@ -4,4 +4,4 @@
 
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
-kra_etims_frappe.kra_etims_frappe.patch.purchase_invoice
+kra_etims_frappe.kra_etims.patch.purchase_invoice
